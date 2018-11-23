@@ -1,0 +1,40 @@
+import java.util.Stack;
+public class StackBracket {
+
+	public static void main(String[] args) {
+		
+		
+	}
+	
+	public static boolean Val(String bracket) {
+		if(bracket.length()%2==1 || bracket.length()==0) {
+			return false;
+		}else {
+			Stack<Character> stack = new Stack<>();
+			for(char car:bracket.toCharArray()) {
+				switch(car) {
+				case '(':
+					stack.push(')');
+					break;
+				case '[':
+					stack.push(']');
+					break;
+				case '{':
+					stack.push('}');
+					break;
+				case '<':
+					stack.push('>');
+					break;
+				default:
+				
+					if(stack.isEmpty()|| car!=stack.peek()) {
+						return false; // closing brace does not match
+					}
+					stack.pop();
+				}
+			}
+			return stack.isEmpty();
+		}
+	}
+
+}
